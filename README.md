@@ -15,22 +15,45 @@
 
 ## À propos de ce guide
 
-# Documentation SOC 2 pour Kubernetes
+# Recherche sur la conformité SOC pour Yamify
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Online-brightgreen)](https://yamify-org.github.io/soc2-kubernetes-docs/)
+## 📋 Aperçu
 
-## Vue d'ensemble
+Documentation de recherche sur la conformité SOC 2 pour les environnements Kubernetes de Yamify, avec un accent sur les déploiements sur AWS EKS et Google GKE.
 
-## 📚 Table des matières
+## 📊 Matrices de conformité
 
-- [Fonctionnalités](#-fonctionnalités)
-- [Démarrage rapide](#-démarrage-rapide)
-- [Structure du projet](#-structure-du-projet)
-- [Développement local](#-développement-local)
-- [Contribuer](#-contribuer)
-- [Licence](#-licence)
-- [Contact](#-contact)
+### [Matrice SOC 2 pour EKS](compliance/eks-soc2-matrix.csv)
+- Contrôles spécifiques AWS EKS
+- Configuration recommandée Yamify
+- Références aux bonnes pratiques AWS
+
+### [Matrice SOC 2 pour GKE](compliance/gke-soc2-matrix.csv)
+- Contrôles spécifiques Google GKE
+- Configuration recommandée Yamify
+- Références aux bonnes pratiques GCP
+
+## 📂 Structure
+
+```
+.
+├── compliance/    # Matrices de conformité
+├── docs/          # Documentation détaillée
+│   ├── eks/      # Documentation EKS
+│   ├── gke/      # Documentation GKE
+│   └── shared/   # Documentation commune
+```
+
+## 🔍 Utilisation
+
+1. Consultez les matrices de conformité pour votre cloud
+2. Suivez les recommandations Yamify
+3. Implémentez les contrôles de sécurité
+4. Utilisez la documentation pour l'audit
+
+## 📞 Contact
+
+Pour toute question, ouvrez une issue dans ce dépôt.
 
 ## ✨ Fonctionnalités
 
@@ -52,68 +75,22 @@
 
 ### Installation locale
 
-1. **Cloner le dépôt**
-   ```bash
-   git clone https://github.com/yamify-org/soc-compliance.git
-   cd soc-compliance
-   ```
-
-2. **Installer les dépendances**
-   ```bash
-   bundle install
-   ```
-
-3. **Démarrer le serveur de développement**
-   ```bash
-   bundle exec jekyll serve --livereload
-   ```
-
-4. **Ouvrir dans le navigateur**
-   
-   Accédez à [http://localhost:4000](http://localhost:4000) dans votre navigateur.
-
-## 🏗️ Structure du projet
-
 ```
 .
-├── _config.yml          # Configuration Jekyll
-├── Gemfile              # Dépendances Ruby
-├── README.md            # Ce fichier
-├── CONTRIBUTING.md      # Guide de contribution
-├── CODE_OF_CONDUCT.md   # Code de conduite
-├── CHANGELOG.md         # Journal des modifications
-├── LICENSE              # Licence du projet
-├── _layouts/            # Modèles de mise en page
-├── assets/              # Fichiers statiques
-│   ├── css/            # Feuilles de style
-│   └── js/             # Fichiers JavaScript
-└── docs/                # Documentation
-    ├── introduction/    # Introduction à la conformité SOC 2
-    ├── aws-eks/        # Documentation spécifique à AWS EKS
-    ├── gcp-gke/        # Documentation spécifique à Google GKE
-    ├── devsecops/      # Pratiques DevSecOps
-    └── references/     # Références et ressources
+├── compliance/           # Matrices de conformité
+├── docs/                 # Documentation détaillée
+│   ├── eks/             # Documentation spécifique à EKS
+│   ├── gke/             # Documentation spécifique à GKE
+│   └── shared/          # Documentation commune
+└── resources/           # Ressources supplémentaires
 ```
 
-## 💻 Développement local
+## 🔍 Comment utiliser
 
-### Commandes utiles
-
-- `bundle exec jekyll serve` - Démarrer le serveur de développement
-- `bundle exec jekyll build` - Construire le site pour la production
-- `bundle exec htmlproofer ./_site` - Vérifier les liens cassés
-
-### Structure des documents
-
-Chaque document doit inclure un en-tête YAML (front matter) avec les métadonnées suivantes :
-
-```yaml
----
-layout: default
-title: Titre de la page
-description: Description courte pour le SEO
----
-```
+1. Consultez les matrices de conformité pour votre fournisseur cloud
+2. Suivez les recommandations spécifiques à Yamify
+3. Implémentez les contrôles de sécurité nécessaires
+4. Utilisez la documentation pour auditer votre configuration
 
 ## 🤝 Contribuer
 
@@ -125,10 +102,6 @@ Les contributions sont les bienvenues ! Veuillez lire notre [guide de contributi
 4. Poussez vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrez une Pull Request
 
-## Licence
-
-Distribué sous la licence MIT. Voir `LICENSE` pour plus d'informations.
-
 ## Contact
 
 Yamify - [@yamify](https://github.com/yamify-org)  
@@ -139,21 +112,3 @@ Projet : [https://github.com/yamify-org/soc-compliance](https://github.com/yamif
 - [AICPA](https://www.aicpa.org/) pour les critères SOC 2
 - [AWS](https://aws.amazon.com/) et [Google Cloud](https://cloud.google.com/) pour leur documentation
 - La communauté Kubernetes pour les outils et bonnes pratiques
-
-## Public cible
-
-- Architectes Cloud
-- Ingénieurs DevOps/DevSecOps
-- Responsables de la sécurité
-- Auditeurs IT
-
-## Comment utiliser cette documentation
-
-1. Commencez par la section [Introduction](docs/introduction/overview.md) pour comprendre les concepts clés
-2. Consultez les bonnes pratiques spécifiques à votre fournisseur cloud (AWS EKS ou GCP GKE)
-3. Implémentez les contrôles de sécurité recommandés
-4. Utilisez les modèles et exemples fournis pour votre propre implémentation
-
-## Licence
-
-[À spécifier selon la licence choisie]
