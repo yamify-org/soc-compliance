@@ -1,10 +1,12 @@
-name: GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Set a branch to deploy
+      - main  # La branche à déployer
   pull_request:
+    branches:
+      - main  # Exécuter aussi sur les PR vers main
 
 jobs:
   deploy:

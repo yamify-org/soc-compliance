@@ -81,7 +81,7 @@ Distribué sous la licence MIT. Voir `LICENSE` pour plus d'informations.
 ## Contact
 
 Yamify - [@yamify](https://github.com/yamify-org)  
-Projet : [https://github.com/yamify-org/soc2-kubernetes-docs](https://github.com/yamify-org/soc2-kubernetes-docs)
+Projet : [https://github.com/yamify-org/soc-compliance](https://github.com/yamify-org/soc-compliance)
 
 ## Remerciements
 

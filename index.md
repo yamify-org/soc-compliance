@@ -38,7 +38,7 @@ Bienvenue dans la documentation complète pour la conformité SOC 2 des environn
 
 <div class="callout">
   <h4>Besoin d'aide ?</h4>
-  <p>Consultez notre <a href="docs/references/faq.md">FAQ</a> ou ouvrez une issue sur <a href="https://github.com/yamify-org/soc2-kubernetes-docs/issues">GitHub</a> pour poser vos questions.</p>
+  <p>Consultez notre <a href="docs/references/faq.md">FAQ</a> ou ouvrez une issue sur <a href="https://github.com/yamify-org/soc-compliance/issues">GitHub</a> pour poser vos questions.</p>
 </div>
 
 <div class="callout callout-success">

@@ -38,9 +38,9 @@ exclude:
   - _site
 
 # Build settings
-repository: yamify-org/soc2-kubernetes-docs
-url: https://yamify-org.github.io/soc2-kubernetes-docs
-baseurl: /soc2-kubernetes-docs
+repository: yamify-org/soc-compliance
+url: https://yamify-org.github.io/soc-compliance
+baseurl: /soc-compliance
 
 # Navigation
 defaults:

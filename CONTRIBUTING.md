@@ -16,7 +16,7 @@ Si vous trouvez un bug, une erreur ou une information obsolète, n'hésitez pas 
 ### Proposer des modifications
 
 1. **Forker le dépôt**
-   Cliquez sur le bouton "Fork" en haut à droite de la page du dépôt.
+   Cliquez sur le bouton "Fork" en haut à droite de la [page du dépôt](https://github.com/yamify-org/soc-compliance).
 
 2. **Créer une branche**
    ```bash
