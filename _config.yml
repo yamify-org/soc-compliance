@@ -1,9 +1,42 @@
 # Configuration for GitHub Pages
 # See https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/configuration-files-for-github-pages-sites
 
+# Site settings
 title: Documentation SOC 2 pour Kubernetes
 description: Guide complet pour la conformité SOC 2 sur EKS et GKE
+baseurl: "/soc-compliance" # Le nom de votre dépôt
+url: "https://yamify-org.github.io" # Votre nom d'utilisateur ou organisation
+
+# Jekyll settings
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Theme settings
 theme: jekyll-theme-cayman
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - .gitignore
+  - .github/
+  - .vscode/
+  - _config.yml
+  - _site/
+  - vendor/
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - .bundle/
+  - .jekyll-cache/
+  - .sass-cache/
+  - .DS_Store
+  - Thumbs.db
 
 # Enable support for Mermaid diagrams
 markdown: kramdown
