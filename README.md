@@ -146,7 +146,6 @@ Projet : [https://github.com/yamify-org/soc-compliance](https://github.com/yamif
 - Ingénieurs DevOps/DevSecOps
 - Responsables de la sécurité
 - Auditeurs IT
-- Responsables de la conformité
 
 ## Comment utiliser cette documentation
 

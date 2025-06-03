@@ -1,230 +1,91 @@
-# Configuration for GitHub Pages
-# See https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/configuration-files-for-github-pages-sites
+# Configuration de base pour GitHub Pages
 
-# Site settings
-title: Documentation SOC 2 pour Kubernetes
-description: Documentation de recherche sur la conformité SOC de Yamify
-baseurl: "" # Vide pour un dépôt de projet
-url: "https://yamify-org.github.io" # URL de base de votre site
+# Paramètres du site
+title: "Recherche sur la conformité SOC - Yamify"
+description: "Documentation sur la conformité SOC 2 pour Yamify sur EKS et GKE"
+baseurl: "/soc-compliance"  # Chemin du dépôt
+url: "https://yamify-org.github.io"  # Votre nom d'utilis/organisation GitHub
 
-# Jekyll settings
+# Paramètres Jekyll
 markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  hard_wrap: false
+  auto_ids: true
+  math_engine: mathjax
 
-# Theme settings
+# Thème et mise en page
 theme: jekyll-theme-cayman
 
 # Plugins
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-feed
   - jekyll-relative-links
-
-# Defaults
-defaults:
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: default
-      show_downloads: true
-      show_toc: true
-
-# Configuration for 404 page
-plugins:
-  - jekyll-redirect-from
-
-# Exclude from processing
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - README.md
-  - CONTRIBUTING.md
-  - CODE_OF_CONDUCT.md
-  - CHANGELOG.md
-  - .gitignore
-  - .github/
-  - .vscode/
-  - _site/
-  - vendor/
-  - node_modules/
-  - .bundle/
-  - .jekyll-cache/
-  - .sass-cache/
-  - .DS_Store
-  - Thumbs.db
-
-# 404 page configuration
-not_found_page_style: default
-
-# Sitemap configuration
-sitemap:
-  exclude:
-    - /404.html
-    - /assets/
-    - /images/
-    - /js/
-    - /css/
-  change_frequency: weekly
-  priority: 0.7
-
-# SEO Configuration
-twitter_username: yamify_org
-github_username:  yamify-org
-
-# Build settings
-markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    span:
-      line_numbers: false
-    block:
-      line_numbers: true
-      start_line: 1
-
-# Timezone
-timezone: Europe/Paris
-
-# Defaults
-defaults:
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: post
-      comments: true
-      author: yamify
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: default
-      comments: false
-      author: yamify
-
-# Exclude from processing
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - README.md
-  - .gitignore
-  - .github/
-  - .vscode/
-  - _config.yml
-  - _site/
-  - vendor/
-  - node_modules/
-  - package.json
-  - package-lock.json
-  - .bundle/
-  - .jekyll-cache/
-  - .sass-cache/
-  - .DS_Store
-  - Thumbs.db
-
-# Enable support for Mermaid diagrams
-markdown: kramdown
-kramdown:
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    block:
-      mermaid:
-        css: class
-        span:
-          class: false
-
-# Plugins
-plugins:
   - jekyll-mermaid
-  - jekyll-seo-tag
-  - jekyll-sitemap
 
-# Exclude from processing.
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
-  - .github
-  - .gitignore
-  - README.md
-  - LICENSE
-  - .DS_Store
-  - .jekyll-cache
-  - .sass-cache
-  - _site
+# Configuration Mermaid
+mermaid:
+  version: "8.14.0"
+  src: "https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js"
+  config:
+    startOnLoad: true
+    theme: "default"
+    securityLevel: "loose"
 
-# Build settings
-repository: yamify-org/soc-compliance
-url: https://yamify-org.github.io/soc-compliance
-baseurl: /soc-compliance
-
-# Navigation
+# Valeurs par défaut
 defaults:
   - scope:
       path: ""
-      type: "pages"
+      type: "docs"
     values:
       layout: "default"
-      show_downloads: true
-      show_toc: true
-      nav_order: 1
-
-# Theme settings
-theme_config:
-  show_downloads: true
-  show_toc: true
-  search: true
-  # Custom CSS
-  custom_css:
-    - /assets/css/style.css
-
-# Mermaid configuration
-mermaid:
-  # Pick a theme (default, dark, forest, or neutral)
-  theme: default
-  # Set the display mode (true for full-width, false for centered)
-  fullWidth: true
-  # Set the scale of the diagram (1.0 = 100%)
-  scale: 1.0
-  # Set the background color (useful for dark themes)
-  backgroundColor: transparent
-
-# SEO settings
-twitter:
-  username: yamify-org
-
-github:
-  repository_url: https://github.com/yamify-org/soc2-kubernetes-docs
-
-# Build settings
-timezone: Europe/Paris
-future: true
-incremental: false
-
-# Collections
-collections:
-  docs:
-    output: true
-    permalink: /:collection/:path/
-
-    sort_by: nav_order
-
-# Defaults
-defaults:
-  - scope:
-      path: ""
-      type: docs
-    values:
-      layout: docs
       toc: true
-      toc_label: "Table des matières"
-      toc_icon: "list"
-      search: true
+      toc_float: true
+      show_sidenav: true
+
+# Exclure les fichiers inutiles
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - .sass-cache/
+  - .jekyll-cache/
+  - .bundle/
+  - .vscode/
+  - .gitignore
+  - .editorconfig
+  - .ruby-version
+  - .ruby-gemset
+  - .DS_Store
+  - Thumbs.db
+
+# Paramètres d'affichage
+show_downloads: true
+show_toc: true
+
+# Configuration du pied de page
+footer:
+  - label: "GitHub"
+    icon: "github"
+    url: "https://github.com/yamify-org/soc-compliance"
+  - label: "Licence MIT"
+    icon: "balance-scale"
+    url: "/LICENSE"
+
+# Configuration des couleurs
+color_theme: "auto"  # auto, light, dark
+
+# Configuration des métadonnées SEO
+seo:
+  name: "Yamify"
+  links:
+    - "https://github.com/yamify-org"
+    - "https://twitter.com/yamify"
+
+# Paramètres avancés
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter_op

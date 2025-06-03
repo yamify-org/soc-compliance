@@ -130,11 +130,19 @@ description: Guide complet pour la conformité SOC 2 sur EKS et GKE
     </div>
   </section>
 
-  <section class="mb-5">
-    <h2 class="mb-4">Ressources</h2>
-    <div class="row g-4">
-      <div class="col-md-3 col-6">
-        <div class="card h-100">
+## Mermaid Example
+
+```mermaid
+graph TD
+    A[Client] -->|HTTPS| B(Load Balancer)
+    B --> C[Pods Yamify]
+    C --> D[(Base de données)]
+    
+    style A fill:#f9f,stroke:#333
+    style B fill:#bbf,stroke:#333
+    style C fill:#9f9,stroke:#333
+    style D fill:#f96,stroke:#333
+```
           <div class="card-body text-center">
             <i class="fas fa-project-diagram fa-2x mb-3 text-primary"></i>
             <h3 class="h5 card-title">Architecture</h3>
