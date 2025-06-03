@@ -1,0 +1,106 @@
+# Configuration for GitHub Pages
+# See https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/configuration-files-for-github-pages-sites
+
+title: Documentation SOC 2 pour Kubernetes
+description: Guide complet pour la conformité SOC 2 sur EKS et GKE
+theme: jekyll-theme-cayman
+
+# Enable support for Mermaid diagrams
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      mermaid:
+        css: class
+        span:
+          class: false
+
+# Plugins
+plugins:
+  - jekyll-mermaid
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from processing.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .github
+  - .gitignore
+  - README.md
+  - LICENSE
+  - .DS_Store
+  - .jekyll-cache
+  - .sass-cache
+  - _site
+
+# Build settings
+repository: yamify-org/soc2-kubernetes-docs
+url: https://yamify-org.github.io/soc2-kubernetes-docs
+baseurl: /soc2-kubernetes-docs
+
+# Navigation
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+      show_downloads: true
+      show_toc: true
+      nav_order: 1
+
+# Theme settings
+theme_config:
+  show_downloads: true
+  show_toc: true
+  search: true
+  # Custom CSS
+  custom_css:
+    - /assets/css/style.css
+
+# Mermaid configuration
+mermaid:
+  # Pick a theme (default, dark, forest, or neutral)
+  theme: default
+  # Set the display mode (true for full-width, false for centered)
+  fullWidth: true
+  # Set the scale of the diagram (1.0 = 100%)
+  scale: 1.0
+  # Set the background color (useful for dark themes)
+  backgroundColor: transparent
+
+# SEO settings
+twitter:
+  username: yamify-org
+
+github:
+  repository_url: https://github.com/yamify-org/soc2-kubernetes-docs
+
+# Build settings
+timezone: Europe/Paris
+future: true
+incremental: false
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
+
+    sort_by: nav_order
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: docs
+    values:
+      layout: docs
+      toc: true
+      toc_label: "Table des matières"
+      toc_icon: "list"
+      search: true

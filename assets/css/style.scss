@@ -1,0 +1,148 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+// Custom styles
+
+// Mermaid diagrams
+.mermaid {
+  margin: 2em 0;
+  text-align: center;
+  
+  svg {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+// Code blocks
+.highlight {
+  border-radius: 4px;
+  margin: 1.5em 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+  pre {
+    padding: 1em;
+    overflow-x: auto;
+  }
+}
+
+// Tables
+table {
+  width: 100%;
+  margin: 2em 0;
+  border-collapse: collapse;
+  
+  th, td {
+    padding: 0.75em;
+    text-align: left;
+    border: 1px solid #e1e4e8;
+  }
+  
+  th {
+    background-color: #f6f8fa;
+    font-weight: 600;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f6f8fa;
+  }
+}
+
+// Callout boxes
+.callout {
+  padding: 1em;
+  margin: 1.5em 0;
+  border-left: 4px solid #0366d6;
+  background-color: #f1f8ff;
+  border-radius: 0 4px 4px 0;
+  
+  &-warning {
+    border-left-color: #f1a208;
+    background-color: #fff8e6;
+  }
+  
+  &-danger {
+    border-left-color: #d73a49;
+    background-color: #ffebee;
+  }
+  
+  &-success {
+    border-left-color: #28a745;
+    background-color: #f0fff4;
+  }
+  
+  h4 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+}
+
+// Responsive images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+// Navigation
+.site-nav {
+  .page-link {
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: none;
+      color: #0366d6;
+    }
+  }
+}
+
+// Footer
+.site-footer {
+  border-top: 1px solid #e1e4e8;
+  padding: 2em 0;
+  margin-top: 3em;
+  
+  .footer-heading {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+  
+  .footer-col-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 1.5em;
+      
+      @media (max-width: 768px) {
+        flex: 0 0 100%;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .site-header {
+    padding: 1em 0;
+  }
+  
+  .site-title {
+    font-size: 1.5em;
+  }
+  
+  .page-content {
+    padding: 1em 0;
+  }
+}
