@@ -1,0 +1,332 @@
+//
+// Main content
+//
+
+// 1. Prevent the main content from being too narrow on large screens
+// 2. Ensure the main content is properly spaced below the header
+// 3. Add some breathing room at the bottom of the page
+.main {
+  flex: 1 0 auto; // 2
+  width: 100%;
+  max-width: $main-max-width;
+  margin: 0 auto;
+  padding: $main-padding-y $main-padding-x;
+  
+  @include media-breakpoint-down(md) {
+    padding: $main-padding-y-sm $main-padding-x-sm;
+  }
+  
+  // Add extra spacing for the first element if it's directly under the header
+  > :first-child {
+    margin-top: 0;
+  }
+  
+  // Add extra spacing for the last element if it's directly above the footer
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Main content with sidebar
+.main-with-sidebar {
+  display: flex;
+  flex-direction: column;
+  
+  @include media-breakpoint-up(lg) {
+    flex-direction: row;
+  }
+  
+  .main-content {
+    flex: 1 1 auto;
+    min-width: 0; // Prevent content from overflowing the container
+    
+    @include media-breakpoint-up(lg) {
+      margin-right: $grid-gutter-width;
+    }
+  }
+  
+  .main-sidebar {
+    flex: 0 0 100%;
+    max-width: 100%;
+    
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 $sidebar-width;
+      max-width: $sidebar-width;
+    }
+    
+    // Sticky sidebar on larger screens
+    @include media-breakpoint-up(lg) {
+      position: sticky;
+      top: $header-height + $spacer * 2;
+      align-self: flex-start;
+      max-height: calc(100vh - #{$header-height + $spacer * 4});
+      overflow-y: auto;
+    }
+  }
+  
+  // Right sidebar variant
+  &.main-sidebar-right {
+    .main-content {
+      @include media-breakpoint-up(lg) {
+        margin-right: 0;
+        margin-left: $grid-gutter-width;
+        order: 1;
+      }
+    }
+    
+    .main-sidebar {
+      @include media-breakpoint-up(lg) {
+        order: 2;
+      }
+    }
+  }
+}
+
+// Main content with hero section
+.main-with-hero {
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+  
+  .hero {
+    margin-bottom: $spacer * 4;
+    
+    @include media-breakpoint-down(md) {
+      margin-bottom: $spacer * 2;
+    }
+  }
+  
+  .main-content {
+    position: relative;
+    z-index: 1;
+    background-color: $body-bg;
+    border-radius: $border-radius-lg;
+    box-shadow: $box-shadow-sm;
+    padding: $spacer * 2;
+    margin-top: -$spacer * 4;
+    
+    @include media-breakpoint-down(md) {
+      margin-top: -$spacer * 2;
+      padding: $spacer * 1.5;
+    }
+  }
+}
+
+// Main content with background
+.main-bg {
+  background-color: $main-bg;
+  background-image: $main-bg-image;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $main-bg-overlay;
+    z-index: 0;
+  }
+  
+  > .container {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Main content with no top padding
+.main-no-top-padding {
+  padding-top: 0;
+}
+
+// Main content with no bottom padding
+.main-no-bottom-padding {
+  padding-bottom: 0;
+}
+
+// Main content with extra top padding
+.main-extra-top-padding {
+  padding-top: $spacer * 4;
+  
+  @include media-breakpoint-down(md) {
+    padding-top: $spacer * 2;
+  }
+}
+
+// Main content with extra bottom padding
+.main-extra-bottom-padding {
+  padding-bottom: $spacer * 4;
+  
+  @include media-breakpoint-down(md) {
+    padding-bottom: $spacer * 2;
+  }
+}
+
+// Main content with centered content
+.main-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  .main-content {
+    max-width: $main-centered-max-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// Main content with sidebar navigation
+.main-with-nav {
+  display: flex;
+  flex-direction: column;
+  
+  @include media-breakpoint-up(lg) {
+    flex-direction: row;
+  }
+  
+  .main-nav {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: $spacer * 2;
+    
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 $sidebar-nav-width;
+      max-width: $sidebar-nav-width;
+      margin-bottom: 0;
+      margin-right: $grid-gutter-width;
+    }
+  }
+  
+  .main-content {
+    flex: 1 1 auto;
+    min-width: 0; // Prevent content from overflowing the container
+  }
+  
+  // Right navigation variant
+  &.main-nav-right {
+    .main-nav {
+      @include media-breakpoint-up(lg) {
+        order: 2;
+        margin-right: 0;
+        margin-left: $grid-gutter-width;
+      }
+    }
+    
+    .main-content {
+      @include media-breakpoint-up(lg) {
+        order: 1;
+      }
+    }
+  }
+}
+
+// Main content with tabs
+.main-with-tabs {
+  .nav-tabs {
+    margin-bottom: $spacer * 1.5;
+    
+    .nav-link {
+      padding: $nav-link-padding-y $nav-link-padding-x;
+      font-weight: $font-weight-medium;
+      color: $nav-link-color;
+      border: none;
+      border-bottom: 2px solid transparent;
+      transition: $nav-link-transition;
+      
+      &:hover {
+        color: $nav-link-hover-color;
+        border-bottom-color: $nav-tabs-link-hover-border-color;
+      }
+      
+      &.active {
+        color: $nav-tabs-link-active-color;
+        background-color: transparent;
+        border-bottom-color: $nav-tabs-link-active-border-color;
+      }
+    }
+  }
+  
+  .tab-content {
+    padding: $spacer * 1.5 0;
+  }
+}
+
+// Main content with cards
+.main-with-cards {
+  .card-deck {
+    margin-bottom: $spacer * 1.5;
+    
+    .card {
+      margin-bottom: $spacer;
+      
+      @include media-breakpoint-up(md) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Main content with sidebar and navigation
+.main-with-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  
+  @include media-breakpoint-up(lg) {
+    flex-direction: row;
+  }
+  
+  .main-nav {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: $spacer * 2;
+    
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 $sidebar-nav-width;
+      max-width: $sidebar-nav-width;
+      margin-bottom: 0;
+      margin-right: $grid-gutter-width;
+    }
+  }
+  
+  .main-content {
+    flex: 1 1 auto;
+    min-width: 0; // Prevent content from overflowing the container
+    
+    @include media-breakpoint-up(lg) {
+      margin-right: $grid-gutter-width;
+    }
+  }
+  
+  .main-sidebar {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-top: $spacer * 2;
+    
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 $sidebar-width;
+      max-width: $sidebar-width;
+      margin-top: 0;
+    }
+  }
+  
+  // Right sidebar variant
+  &.main-sidebar-right {
+    .main-content {
+      @include media-breakpoint-up(lg) {
+        order: 1;
+        margin-right: 0;
+        margin-left: $grid-gutter-width;
+      }
+    }
+    
+    .main-sidebar {
+      @include media-breakpoint-up(lg) {
+        order: 2;
+      }
+    }
+  }
+}

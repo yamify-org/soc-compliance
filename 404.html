@@ -1,0 +1,84 @@
+---
+layout: default
+title: Page non trouvée (404)
+description: La page que vous recherchez n'existe pas ou a été déplacée.
+permalink: /404.html
+---
+
+<div class="container text-center py-5">
+  <h1 class="display-1">404</h1>
+  <h2 class="mb-4">Page non trouvée</h2>
+  
+  <p class="lead mb-4">
+    Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+  </p>
+  
+  <div class="mt-5">
+    <a href="/" class="btn btn-primary btn-lg">
+      <i class="fas fa-home me-2"></i> Retour à l'accueil
+    </a>
+    
+    <a href="https://github.com/yamify-org/soc-compliance/issues/new" class="btn btn-outline-secondary btn-lg ms-3" target="_blank">
+      <i class="fas fa-bug me-2"></i> Signaler un problème
+    </a>
+  </div>
+  
+  <div class="mt-5">
+    <h3 class="h5 mb-3">Essayez ces pages :</h3>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="/docs/introduction/overview" class="btn btn-outline-primary">Introduction</a>
+      <a href="/docs/aws-eks/security-best-practices" class="btn btn-outline-primary">AWS EKS</a>
+      <a href="/docs/gcp-gke/security-best-practices" class="btn btn-outline-primary">Google GKE</a>
+      <a href="/docs/devsecops/overview" class="btn btn-outline-primary">DevSecOps</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .btn {
+    transition: all 0.3s ease;
+  }
+  
+  .btn-outline-primary {
+    border-color: #0366d6;
+    color: #0366d6;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #0366d6;
+    color: white;
+  }
+  
+  .btn-primary {
+    background-color: #0366d6;
+    border-color: #0366d6;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0256bd;
+    border-color: #0256bd;
+  }
+  
+  .display-1 {
+    font-size: 8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #0366d6;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .display-1 {
+      font-size: 6rem;
+    }
+    
+    .btn-lg {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+    
+    .ms-3 {
+      margin-left: 0 !important;
+    }
+  }
+</style>

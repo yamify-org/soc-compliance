@@ -1,0 +1,21 @@
+# www.robotstxt.org/
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Fichiers et dossiers à exclure
+Disallow: /_site/
+Disallow: /_includes/
+Disallow: /_layouts/
+Disallow: /_posts/
+Disallow: /_data/
+Disallow: /_sass/
+Disallow: /assets/
+Disallow: /node_modules/
+Disallow: /vendor/
+Disallow: /Gemfile
+Disallow: /Gemfile.lock
+
+# Sitemap
+Sitemap: https://yamify-org.github.io/soc-compliance/sitemap.xml

@@ -1,0 +1,370 @@
+// Grid system
+//
+// 1. Set the container width, and override it for fixed navbars in media queries.
+// 2. Sets the maximum width of `.container` for different screen sizes.
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+@if $enable-grid-classes {
+  // Single container class with breakpoint max-widths
+  .container {
+    @include make-container();
+    @include make-container-max-widths();
+  }
+
+  // 100% wide container at all breakpoints
+  .container-fluid {
+    @include make-container();
+  }
+
+  // Responsive containers that are 100% wide until a breakpoint
+  @each $breakpoint, $container-max-width in $container-max-widths {
+    .container-#{$breakpoint} {
+      @extend .container-fluid;
+    }
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      %responsive-container-#{$breakpoint} {
+        max-width: $container-max-width;
+      }
+
+      // Extend each breakpoint which is smaller or equal to the current breakpoint
+      $extend-breakpoint: true;
+
+      @each $name, $width in $grid-breakpoints {
+        @if ($extend-breakpoint) {
+          .container#{breakpoint-infix($name, $grid-breakpoints)} {
+            @extend %responsive-container-#{$breakpoint};
+          }
+
+          // Once the current breakpoint is reached, stop extending
+          @if ($breakpoint == $name) {
+            $extend-breakpoint: false;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Row
+//
+// Rows contain your columns.
+
+
+@if $enable-grid-classes {
+  .row {
+    @include make-row();
+  }
+
+  // Remove the negative margin from default .row, then the horizontal padding
+  // from all immediate children columns to counteract the padding
+  .no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col,
+    > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+@if $enable-grid-classes {
+  @include make-grid-columns();
+}
+
+
+// Flex variation
+//
+// Custom styles for additional flex alignment options.
+
+
+// Flex column reordering
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .flex#{$infix}-row            { flex-direction: row !important; }
+    .flex#{$infix}-column         { flex-direction: column !important; }
+    .flex#{$infix}-row-reverse    { flex-direction: row-reverse !important; }
+    .flex#{$infix}-column-reverse { flex-direction: column-reverse !important; }
+
+    .flex#{$infix}-wrap         { flex-wrap: wrap !important; }
+    .flex#{$infix}-nowrap      { flex-wrap: nowrap !important; }
+    .flex#{$infix}-wrap-reverse { flex-wrap: wrap-reverse !important; }
+
+    .flex#{$infix}-fill         { flex: 1 1 auto !important; }
+    .flex#{$infix}-grow-0       { flex-grow: 0 !important; }
+    .flex#{$infix}-grow-1       { flex-grow: 1 !important; }
+    .flex#{$infix}-shrink-0     { flex-shrink: 0 !important; }
+    .flex#{$infix}-shrink-1     { flex-shrink: 1 !important; }
+  }
+}
+
+// Responsive alignment
+
+.justify-content-start   { justify-content: flex-start !important; }
+.justify-content-end     { justify-content: flex-end !important; }
+.justify-content-center  { justify-content: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.justify-content-around  { justify-content: space-around !important; }
+
+.align-items-start    { align-items: flex-start !important; }
+.align-items-end      { align-items: flex-end !important; }
+.align-items-center   { align-items: center !important; }
+.align-items-baseline { align-items: baseline !important; }
+.align-items-stretch  { align-items: stretch !important; }
+
+align-content-start   { align-content: flex-start !important; }
+align-content-end     { align-content: flex-end !important; }
+align-content-center  { align-content: center !important; }
+align-content-between { align-content: space-between !important; }
+align-content-around  { align-content: space-around !important; }
+align-content-stretch { align-content: stretch !important; }
+
+.align-self-auto     { align-self: auto !important; }
+.align-self-start    { align-self: flex-start !important; }
+.align-self-end      { align-self: flex-end !important; }
+.align-self-center   { align-self: center !important; }
+.align-self-baseline { align-self: baseline !important; }
+.align-self-stretch  { align-self: stretch !important; }
+
+// Responsive alignment
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .justify-content#{$infix}-start   { justify-content: flex-start !important; }
+    .justify-content#{$infix}-end     { justify-content: flex-end !important; }
+    .justify-content#{$infix}-center  { justify-content: center !important; }
+    .justify-content#{$infix}-between { justify-content: space-between !important; }
+    .justify-content#{$infix}-around  { justify-content: space-around !important; }
+
+    .align-items#{$infix}-start    { align-items: flex-start !important; }
+    .align-items#{$infix}-end      { align-items: flex-end !important; }
+    .align-items#{$infix}-center   { align-items: center !important; }
+    .align-items#{$infix}-baseline { align-items: baseline !important; }
+    .align-items#{$infix}-stretch  { align-items: stretch !important; }
+
+    .align-content#{$infix}-start   { align-content: flex-start !important; }
+    .align-content#{$infix}-end     { align-content: flex-end !important; }
+    .align-content#{$infix}-center  { align-content: center !important; }
+    .align-content#{$infix}-between { align-content: space-between !important; }
+    .align-content#{$infix}-around  { align-content: space-around !important; }
+    .align-content#{$infix}-stretch { align-content: stretch !important; }
+
+    .align-self#{$infix}-auto     { align-self: auto !important; }
+    .align-self#{$infix}-start    { align-self: flex-start !important; }
+    .align-self#{$infix}-end      { align-self: flex-end !important; }
+    .align-self#{$infix}-center   { align-self: center !important; }
+    .align-self#{$infix}-baseline { align-self: baseline !important; }
+    .align-self#{$infix}-stretch  { align-self: stretch !important; }
+  }
+}
+
+// Grid utilities
+//
+// Grid classes for quickly applying grid layouts to components.
+
+@if $enable-grid-classes {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      @if $grid-columns > 0 {
+        @for $i from 1 through $grid-columns {
+          .g-col#{$infix}-#{$i} {
+            grid-column: auto / span $i;
+          }
+        }
+        // Start with `1` because `0` is and invalid value.
+        // Ends at `$columns - 1` because offsetting by the width of an entire row isn't possible.
+        @for $i from 0 through ($grid-columns - 1) {
+          .g-start#{$infix}-#{$i} {
+            margin-left: if($i > 0, percentage($i / $grid-columns), auto);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Row columns
+//
+// Specify on a container element to limit the columns within.
+
+@if $enable-grid-classes {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      @if $grid-row-columns > 0 {
+        @for $i from 1 through $grid-row-columns {
+          .row-cols#{$infix}-#{$i} {
+            @include row-cols($i);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Gutters
+//
+// Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
+
+@if $enable-grid-classes {
+  .g-0,
+  .gx-0 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width-0};
+  }
+  .g-0,
+  .gy-0 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width-0};
+  }
+
+  .g-1,
+  .gx-1 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width / 4};
+  }
+  .g-1,
+  .gy-1 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width / 4};
+  }
+
+  .g-2,
+  .gx-2 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width / 2};
+  }
+  .g-2,
+  .gy-2 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width / 2};
+  }
+
+  .g-3,
+  .gx-3 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width};
+  }
+  .g-3,
+  .gy-3 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width};
+  }
+
+  .g-4,
+  .gx-4 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width * 1.5};
+  }
+  .g-4,
+  .gy-4 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width * 1.5};
+  }
+
+  .g-5,
+  .gx-5 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width * 3};
+  }
+  .g-5,
+  .gy-5 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width * 3};
+  }
+}
+
+// Grid columns
+//
+// Common styles for small and large grid columns
+
+@if $enable-grid-classes {
+  @include make-grid-columns();
+}
+
+// Row columns
+//
+// Specify on a container element to limit the columns within.
+
+
+@if $enable-grid-classes {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      @if $grid-row-columns > 0 {
+        @for $i from 1 through $grid-row-columns {
+          .row-cols#{$infix}-#{$i} {
+            @include row-cols($i);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Gutters
+//
+// Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
+
+@if $enable-grid-classes {
+  .g-0,
+  .gx-0 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width-0};
+  }
+  .g-0,
+  .gy-0 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width-0};
+  }
+
+  .g-1,
+  .gx-1 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width / 4};
+  }
+  .g-1,
+  .gy-1 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width / 4};
+  }
+
+  .g-2,
+  .gx-2 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width / 2};
+  }
+  .g-2,
+  .gy-2 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width / 2};
+  }
+
+  .g-3,
+  .gx-3 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width};
+  }
+  .g-3,
+  .gy-3 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width};
+  }
+
+  .g-4,
+  .gx-4 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width * 1.5};
+  }
+  .g-4,
+  .gy-4 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width * 1.5};
+  }
+
+  .g-5,
+  .gx-5 {
+    --#{$variable-prefix}gutter-x: #{$grid-gutter-width * 3};
+  }
+  .g-5,
+  .gy-5 {
+    --#{$variable-prefix}gutter-y: #{$grid-gutter-width * 3};
+  }
+}

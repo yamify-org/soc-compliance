@@ -1,0 +1,538 @@
+//
+// Buttons
+//
+// 1. Set the base styles for buttons
+// 2. Include theme colors for buttons
+// 3. Add button sizes
+// 4. Add button states
+
+// Base styles
+// 1
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: $btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
+  @include transition($btn-transition);
+
+  // Share hover and focus styles
+  @include hover() {
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.focus {
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
+
+  // Disabled buttons
+  &.disabled,
+  &:disabled {
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+  }
+
+  // Button with icon
+  .icon {
+    margin-right: $btn-icon-spacing;
+    font-size: $btn-icon-size;
+    line-height: 1;
+  }
+
+  // Button with icon only (no text)
+  &.btn-icon {
+    width: $btn-icon-size + ($btn-padding-y * 2);
+    height: $btn-icon-size + ($btn-padding-y * 2);
+    padding: 0;
+    line-height: 1;
+    
+    .icon {
+      margin: 0;
+    }
+  }
+}
+
+// Alternate buttons
+// 2
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+
+// Outline buttons
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+
+// Link buttons
+.btn-link {
+  font-weight: $font-weight-normal;
+  color: $link-color;
+  text-decoration: $link-decoration;
+
+  @include hover() {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  &:focus,
+  &.focus {
+    text-decoration: $link-hover-decoration;
+    box-shadow: none;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $btn-link-disabled-color;
+    pointer-events: none;
+  }
+}
+
+// Button Sizes
+// 3
+.btn-lg {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+  
+  &.btn-icon {
+    width: $btn-icon-size-lg + ($btn-padding-y-lg * 2);
+    height: $btn-icon-size-lg + ($btn-padding-y-lg * 2);
+    
+    .icon {
+      font-size: $btn-icon-size-lg;
+    }
+  }
+}
+
+.btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+  
+  &.btn-icon {
+    width: $btn-icon-size-sm + ($btn-padding-y-sm * 2);
+    height: $btn-icon-size-sm + ($btn-padding-y-sm * 2);
+    
+    .icon {
+      font-size: $btn-icon-size-sm;
+    }
+  }
+}
+
+// Block button
+.btn-block {
+  display: block;
+  width: 100%;
+
+  // Vertically space out multiple block buttons
+  + .btn-block {
+    margin-top: $btn-block-spacing-y;
+  }
+}
+
+// Button with loading state
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+  color: transparent !important;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $spinner-width-sm;
+    height: $spinner-width-sm;
+    margin-top: -$spinner-width-sm / 2;
+    margin-left: -$spinner-width-sm / 2;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+    opacity: 1;
+  }
+  
+  &.btn-lg::after {
+    width: $spinner-width;
+    height: $spinner-width;
+    margin-top: -$spinner-width / 2;
+    margin-left: -$spinner-width / 2;
+    border-width: 3px;
+  }
+  
+  &.btn-sm::after {
+    width: $spinner-width-sm / 1.5;
+    height: $spinner-width-sm / 1.5;
+    margin-top: -$spinner-width-sm / 3;
+    margin-left: -$spinner-width-sm / 3;
+    border-width: 1.5px;
+  }
+}
+
+// Button with icon on the right
+.btn-icon-end {
+  flex-direction: row-reverse;
+  
+  .icon {
+    margin-right: 0;
+    margin-left: $btn-icon-spacing;
+  }
+}
+
+// Button with badge
+.btn-badge {
+  position: relative;
+  
+  .badge {
+    position: absolute;
+    top: -$badge-pill-padding-y;
+    right: -$badge-pill-padding-x;
+    padding: $badge-pill-padding-y $badge-pill-padding-x;
+    border-radius: $badge-pill-border-radius;
+    font-size: $badge-font-size;
+    line-height: 1;
+  }
+  
+  &.btn-sm .badge {
+    top: -$badge-pill-padding-y-sm;
+    right: -$badge-pill-padding-x-sm;
+    padding: $badge-pill-padding-y-sm $badge-pill-padding-x-sm;
+    font-size: $badge-font-size-sm;
+  }
+  
+  &.btn-lg .badge {
+    top: -$badge-pill-padding-y-lg;
+    right: -$badge-pill-padding-x-lg;
+    padding: $badge-pill-padding-y-lg $badge-pill-padding-x-lg;
+    font-size: $badge-font-size-lg;
+  }
+}
+
+// Button with dropdown toggle
+.btn-group {
+  .dropdown-toggle {
+    &::after {
+      margin-left: $btn-dropdown-toggle-margin;
+    }
+    
+    &.btn-icon {
+      &::after {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+// Button group
+.btn-group {
+  > .btn {
+    position: relative;
+    flex: 0 1 auto;
+    
+    // Bring the hover, focused, and "active" buttons to the front to overlay
+    // the borders properly
+    @include hover() {
+      z-index: 1;
+    }
+    
+    &:focus,
+    &:active,
+    &.active {
+      z-index: 1;
+    }
+  }
+  
+  // Prevent double borders when buttons are next to each other
+  > .btn:not(:first-child),
+  > .btn-group:not(:first-child) {
+    margin-left: -$btn-border-width;
+  }
+  
+  > .btn:not(:last-child):not(.dropdown-toggle),
+  > .btn-group:not(:last-child) > .btn {
+    @include border-right-radius(0);
+  }
+  
+  > .btn:not(:first-child),
+  > .btn-group:not(:first-child) > .btn {
+    @include border-left-radius(0);
+  }
+}
+
+// Button toolbar
+.btn-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  
+  .input-group {
+    width: auto;
+  }
+  
+  > * + * {
+    margin-left: $btn-toolbar-spacing;
+  }
+}
+
+// Button with shadow
+.btn-shadow {
+  box-shadow: $btn-box-shadow;
+  
+  &:hover,
+  &.hover {
+    box-shadow: $btn-hover-box-shadow;
+  }
+  
+  &:focus,
+  &.focus {
+    box-shadow: $btn-focus-box-shadow;
+  }
+  
+  &:active,
+  &.active {
+    box-shadow: $btn-active-box-shadow;
+  }
+  
+  &:disabled,
+  &.disabled {
+    box-shadow: none;
+  }
+}
+
+// Button with gradient
+.btn-gradient {
+  background-image: $btn-gradient-bg;
+  background-size: 200% auto;
+  transition: $btn-transition, background-position 0.3s ease-in-out;
+  
+  &:hover {
+    background-position: right center;
+  }
+  
+  @each $color, $value in $theme-colors {
+    &.btn-#{$color} {
+      background-image: linear-gradient(45deg, $value, adjust-hue($value, 15%));
+      
+      &:hover {
+        background-image: linear-gradient(45deg, darken($value, 5%), adjust-hue(darken($value, 5%), 15%));
+      }
+    }
+  }
+}
+
+// Button with icon animation
+.btn-icon-animate {
+  .icon {
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover .icon {
+    transform: translateX(3px);
+  }
+  
+  &.btn-icon-end:hover .icon {
+    transform: translateX(-3px);
+  }
+}
+
+// Button with pulse effect
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba($primary, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba($primary, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba($primary, 0);
+  }
+}
+
+.btn-pulse {
+  animation: pulse 2s infinite;
+  
+  @each $color, $value in $theme-colors {
+    &.btn-#{$color} {
+      animation-name: pulse-#{$color};
+    }
+    
+    @keyframes pulse-#{$color} {
+      0% {
+        box-shadow: 0 0 0 0 rgba($value, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba($value, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba($value, 0);
+      }
+    }
+  }
+  
+  &:hover {
+    animation: none;
+  }
+}
+
+// Button with border animation
+.btn-border-animate {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $primary;
+    z-index: -2;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: darken($primary, 10%);
+    transition: all 0.3s;
+    z-index: -1;
+  }
+  
+  &:hover {
+    color: color-yiq($primary);
+    
+    &::before {
+      width: 100%;
+    }
+  }
+  
+  @each $color, $value in $theme-colors {
+    &.btn-#{$color} {
+      &::after {
+        background-color: $value;
+      }
+      
+      &::before {
+        background-color: darken($value, 10%);
+      }
+      
+      &:hover {
+        color: color-yiq($value);
+      }
+    }
+  }
+  
+  // Outline variant
+  &.btn-outline-primary {
+    &::after {
+      background-color: transparent;
+      border: $btn-border-width solid $primary;
+    }
+    
+    &::before {
+      background-color: $primary;
+    }
+    
+    &:hover {
+      color: color-yiq($primary);
+    }
+  }
+  
+  @each $color, $value in $theme-colors {
+    &.btn-outline-#{$color} {
+      &::after {
+        background-color: transparent;
+        border: $btn-border-width solid $value;
+      }
+      
+      &::before {
+        background-color: $value;
+      }
+      
+      &:hover {
+        color: color-yiq($value);
+      }
+    }
+  }
+}
+
+// Button with 3D effect
+.btn-3d {
+  position: relative;
+  top: 0;
+  transition: all 0.15s ease;
+  
+  &:hover {
+    top: -2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  &:active {
+    top: 2px;
+    box-shadow: none;
+  }
+  
+  @each $color, $value in $theme-colors {
+    &.btn-#{$color} {
+      box-shadow: 0 4px 0 darken($value, 10%), 0 5px 10px rgba(0, 0, 0, 0.1);
+      
+      &:hover {
+        box-shadow: 0 6px 0 darken($value, 10%), 0 7px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      &:active {
+        box-shadow: 0 2px 0 darken($value, 10%), 0 3px 5px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
+
+// Button with social colors
+@each $color, $value in $social-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+  
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+
+// Button with text and icon on top
+.btn-vertical {
+  flex-direction: column;
+  padding: $btn-padding-y-sm $btn-padding-x;
+  
+  .icon {
+    margin: 0 0 $btn-icon-spacing 0;
+    font-size: $btn-icon-size * 1.5;
+  }
+  
+  &.btn-lg {
+    padding: $btn-padding-y $btn-padding-x-lg;
+    
+    .icon {
+      font-size: $btn-icon-size-lg * 1.5;
+    }
+  }
+  
+  &.btn-sm {
+    padding: $btn-padding-y-xs $btn-padding-x-sm;
+    
+    .icon {
+      font-size: $btn-icon-size-sm * 1.5;
+    }
+  }
+}

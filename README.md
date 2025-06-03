@@ -22,54 +22,105 @@
 
 ## Vue d'ensemble
 
-Cette documentation fournit un guide complet pour la mise en conformité SOC 2 Type II des environnements Kubernetes sur AWS EKS et Google GKE. Elle couvre les aspects techniques, organisationnels et procéduraux nécessaires pour répondre aux exigences SOC 2.
+## 📚 Table des matières
 
-## Fonctionnalités
+- [Fonctionnalités](#-fonctionnalités)
+- [Démarrage rapide](#-démarrage-rapide)
+- [Structure du projet](#-structure-du-projet)
+- [Développement local](#-développement-local)
+- [Contribuer](#-contribuer)
+- [Licence](#-licence)
+- [Contact](#-contact)
 
-- 🛡️ Couverture complète des critères SOC 2 (sécurité, disponibilité, confidentialité)
-- ☁️ Guides spécifiques pour AWS EKS et Google GKE
-- 🔄 Approche DevSecOps pour une conformité continue
-- 📊 Diagrammes d'architecture et flux de données
-- 🔗 Références complètes vers la documentation officielle
+## ✨ Fonctionnalités
 
-## Navigation rapide
+- Documentation complète sur la conformité SOC 2 pour Kubernetes
+- Guides spécifiques pour AWS EKS et Google GKE
+- Bonnes pratiques de sécurité et configurations recommandées
+- Processus DevSecOps pour la conformité continue
+- Documentation claire et structurée
+- Support pour les diagrammes Mermaid
+- Optimisé pour la recherche et la navigation
 
-- [Introduction](docs/introduction/overview.md)
-- [Présentation des rapports SOC](docs/introduction/soc-reports.md)
-- [Bonnes pratiques AWS EKS](docs/aws-eks/security-best-practices.md)
-- [Bonnes pratiques GCP GKE](docs/gcp-gke/security-best-practices.md)
-- [Intégration DevSecOps](docs/devsecops/overview.md)
-- [Architecture](docs/architecture.md)
-- [Bibliographie](docs/references/bibliography.md)
+## 🚀 Démarrage rapide
 
-## Comment utiliser cette documentation
+### Prérequis
 
-### En ligne
+- Ruby >= 2.6.0
+- Bundler
+- Jekyll
 
-La documentation est disponible en ligne à l'adresse :  
-https://yamify-org.github.io/soc2-kubernetes-docs/
+### Installation locale
 
-### En local
-
-1. Clonez le dépôt :
+1. **Cloner le dépôt**
    ```bash
-   git clone https://github.com/yamify-org/soc2-kubernetes-docs.git
-   cd soc2-kubernetes-docs
+   git clone https://github.com/yamify-org/soc-compliance.git
+   cd soc-compliance
    ```
 
-2. Pour visualiser localement avec Jekyll (nécessite Ruby) :
+2. **Installer les dépendances**
    ```bash
    bundle install
-   bundle exec jekyll serve
    ```
-   Puis ouvrez http://localhost:4000 dans votre navigateur.
 
-## Contribution
+3. **Démarrer le serveur de développement**
+   ```bash
+   bundle exec jekyll serve --livereload
+   ```
 
-Les contributions sont les bienvenues ! Voici comment contribuer :
+4. **Ouvrir dans le navigateur**
+   
+   Accédez à [http://localhost:4000](http://localhost:4000) dans votre navigateur.
 
-1. Forkez le projet
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
+## 🏗️ Structure du projet
+
+```
+.
+├── _config.yml          # Configuration Jekyll
+├── Gemfile              # Dépendances Ruby
+├── README.md            # Ce fichier
+├── CONTRIBUTING.md      # Guide de contribution
+├── CODE_OF_CONDUCT.md   # Code de conduite
+├── CHANGELOG.md         # Journal des modifications
+├── LICENSE              # Licence du projet
+├── _layouts/            # Modèles de mise en page
+├── assets/              # Fichiers statiques
+│   ├── css/            # Feuilles de style
+│   └── js/             # Fichiers JavaScript
+└── docs/                # Documentation
+    ├── introduction/    # Introduction à la conformité SOC 2
+    ├── aws-eks/        # Documentation spécifique à AWS EKS
+    ├── gcp-gke/        # Documentation spécifique à Google GKE
+    ├── devsecops/      # Pratiques DevSecOps
+    └── references/     # Références et ressources
+```
+
+## 💻 Développement local
+
+### Commandes utiles
+
+- `bundle exec jekyll serve` - Démarrer le serveur de développement
+- `bundle exec jekyll build` - Construire le site pour la production
+- `bundle exec htmlproofer ./_site` - Vérifier les liens cassés
+
+### Structure des documents
+
+Chaque document doit inclure un en-tête YAML (front matter) avec les métadonnées suivantes :
+
+```yaml
+---
+layout: default
+title: Titre de la page
+description: Description courte pour le SEO
+---
+```
+
+## 🤝 Contribuer
+
+Les contributions sont les bienvenues ! Veuillez lire notre [guide de contribution](CONTRIBUTING.md) pour commencer.
+
+1. Fork le projet
+2. Créez votre branche de fonctionnalité (`git checkout -b feature/AmazingFeature`)
 3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
 4. Poussez vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrez une Pull Request

@@ -5,27 +5,112 @@ _bundle/
 .ruby-version
 .ruby-gemset
 vendor/bundle/
+Gemfile.lock
 
 # Build output
 _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
 
 # Environment files
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.example
 
 # IDE and editor files
 .idea/
 .vscode/
 *.swp
 *.swo
+*.swn
 .DS_Store
 Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local development
+.jekyll-cache/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Testing
+.spec-tmp/
+coverage/
+
+# Dependency directories
+bower_components/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Local Netlify folder
+.netlify/
+
+# Build output
+build/
+dist/
+
+# Temporary files
+*.swp
+*~
+
+# Project specific
+.asset-cache/
+.asset_packages/
+.build/
+.byebug_history
+.env
+.env.*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.ruby-version
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
 
 # Logs
 logs

@@ -1,0 +1,277 @@
+//
+// Sidebar
+//
+// 1. Make sure the sidebar doesn't get too wide on large screens
+// 2. Add a subtle border to separate the sidebar from the main content
+// 3. Add some padding to the sidebar content
+// 4. Make the sidebar sticky on larger screens
+
+.sidebar {
+  position: relative;
+  width: 100%;
+  max-width: $sidebar-width; // 1
+  margin: 0 auto;
+  padding: $sidebar-padding-y $sidebar-padding-x; // 3
+  background-color: $sidebar-bg;
+  border-radius: $border-radius;
+  box-shadow: $sidebar-box-shadow;
+  
+  @include media-breakpoint-up(lg) {
+    position: sticky; // 4
+    top: $header-height + $spacer * 2;
+    align-self: flex-start;
+    max-height: calc(100vh - #{$header-height + $spacer * 4});
+    overflow-y: auto;
+  }
+  
+  // Sidebar with border
+  &.sidebar-bordered {
+    border: $sidebar-border-width solid $sidebar-border-color; // 2
+  }
+  
+  // Sidebar with no shadow
+  &.sidebar-no-shadow {
+    box-shadow: none;
+  }
+  
+  // Sidebar with custom background
+  &.sidebar-dark {
+    background-color: $sidebar-dark-bg;
+    color: $sidebar-dark-color;
+    
+    .sidebar-title,
+    .nav-link {
+      color: $sidebar-dark-color;
+      
+      &:hover {
+        color: $sidebar-dark-hover-color;
+      }
+    }
+    
+    .nav-link.active {
+      color: $sidebar-dark-active-color;
+      background-color: $sidebar-dark-active-bg;
+    }
+    
+    .divider {
+      border-color: $sidebar-dark-divider-color;
+    }
+  }
+  
+  // Sidebar with light background
+  &.sidebar-light {
+    background-color: $sidebar-light-bg;
+    color: $sidebar-light-color;
+    
+    .sidebar-title,
+    .nav-link {
+      color: $sidebar-light-color;
+      
+      &:hover {
+        color: $sidebar-light-hover-color;
+      }
+    }
+    
+    .nav-link.active {
+      color: $sidebar-light-active-color;
+      background-color: $sidebar-light-active-bg;
+    }
+    
+    .divider {
+      border-color: $sidebar-light-divider-color;
+    }
+  }
+}
+
+// Sidebar title
+.sidebar-title {
+  margin: 0 0 $spacer * 1.5;
+  padding: 0 0 $spacer * 0.5;
+  font-size: $h5-font-size;
+  font-weight: $font-weight-bold;
+  color: $sidebar-title-color;
+  border-bottom: $sidebar-title-border-width solid $sidebar-title-border-color;
+}
+
+// Sidebar navigation
+.sidebar-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+  .nav-item {
+    margin-bottom: $spacer * 0.25;
+  }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: $sidebar-nav-link-padding-y $sidebar-nav-link-padding-x;
+    font-size: $sidebar-nav-link-font-size;
+    font-weight: $sidebar-nav-link-font-weight;
+    color: $sidebar-nav-link-color;
+    border-radius: $border-radius;
+    transition: $sidebar-nav-link-transition;
+    
+    &:hover {
+      color: $sidebar-nav-link-hover-color;
+      background-color: $sidebar-nav-link-hover-bg;
+      text-decoration: none;
+    }
+    
+    &.active {
+      color: $sidebar-nav-link-active-color;
+      background-color: $sidebar-nav-link-active-bg;
+      font-weight: $sidebar-nav-link-active-font-weight;
+    }
+    
+    // Icon
+    .icon {
+      margin-right: $spacer * 0.75;
+      font-size: $sidebar-nav-icon-size;
+      width: $sidebar-nav-icon-size;
+      text-align: center;
+    }
+    
+    // Badge
+    .badge {
+      margin-left: auto;
+      padding: 0.25em 0.5em;
+      font-size: 75%;
+      font-weight: $font-weight-bold;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 10rem;
+    }
+  }
+  
+  // Nested navigation
+  .nav {
+    margin-left: $spacer * 1.5;
+    margin-top: $spacer * 0.25;
+    
+    .nav-link {
+      padding-left: $spacer * 1.5;
+      font-size: $sidebar-nav-nested-link-font-size;
+      
+      &::before {
+        content: '—';
+        margin-right: $spacer * 0.5;
+        color: $sidebar-nav-nested-link-bullet-color;
+      }
+    }
+  }
+  
+  // Divider
+  .divider {
+    height: 1px;
+    margin: $spacer 0;
+    overflow: hidden;
+    background-color: $sidebar-divider-color;
+    border: none;
+  }
+}
+
+// Sidebar section
+.sidebar-section {
+  margin-bottom: $spacer * 1.5;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  .section-title {
+    margin: 0 0 $spacer * 0.5;
+    padding: 0;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $sidebar-section-title-color;
+  }
+}
+
+// Sidebar footer
+.sidebar-footer {
+  margin-top: $spacer * 1.5;
+  padding-top: $spacer * 1.5;
+  border-top: $sidebar-footer-border-width solid $sidebar-footer-border-color;
+  font-size: $font-size-sm;
+  color: $sidebar-footer-color;
+  
+  a {
+    color: $sidebar-footer-link-color;
+    
+    &:hover {
+      color: $sidebar-footer-link-hover-color;
+      text-decoration: none;
+    }
+  }
+}
+
+// Sidebar variants
+@each $color, $value in $theme-colors {
+  .sidebar-#{$color} {
+    background-color: $value;
+    color: color-contrast($value);
+    
+    .sidebar-title {
+      color: color-contrast($value);
+      border-bottom-color: rgba(color-contrast($value), 0.1);
+    }
+    
+    .nav-link {
+      color: rgba(color-contrast($value), 0.8);
+      
+      &:hover {
+        color: color-contrast($value);
+        background-color: rgba(color-contrast($value), 0.1);
+      }
+      
+      &.active {
+        color: color-contrast($value);
+        background-color: rgba(color-contrast($value), 0.2);
+      }
+    }
+    
+    .divider {
+      background-color: rgba(color-contrast($value), 0.1);
+    }
+    
+    .sidebar-section {
+      .section-title {
+        color: rgba(color-contrast($value), 0.6);
+      }
+    }
+    
+    .sidebar-footer {
+      border-top-color: rgba(color-contrast($value), 0.1);
+      color: rgba(color-contrast($value), 0.6);
+      
+      a {
+        color: rgba(color-contrast($value), 0.8);
+        
+        &:hover {
+          color: color-contrast($value);
+        }
+      }
+    }
+  }
+}
+
+// Responsive sidebar
+@include media-breakpoint-down(md) {
+  .sidebar {
+    max-width: 100%;
+    margin-bottom: $spacer * 2;
+    
+    &.sidebar-sticky {
+      position: static;
+      top: auto;
+      max-height: none;
+      overflow-y: visible;
+    }
+  }
+}
