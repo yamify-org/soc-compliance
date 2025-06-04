@@ -48,49 +48,13 @@ Documentation de recherche sur la conformité SOC 2 pour les environnements Kube
 
 1. Consultez les matrices de conformité pour votre cloud
 2. Suivez les recommandations Yamify
-3. Implémentez les contrôles de sécurité
+3. Implémentez les contrôles de sécurité nécessaires
 4. Utilisez la documentation pour l'audit
 
 ## 📞 Contact
 
 Pour toute question, ouvrez une issue dans ce dépôt.
 
-## ✨ Fonctionnalités
-
-- Documentation complète sur la conformité SOC 2 pour Kubernetes
-- Guides spécifiques pour AWS EKS et Google GKE
-- Bonnes pratiques de sécurité et configurations recommandées
-- Processus DevSecOps pour la conformité continue
-- Documentation claire et structurée
-- Support pour les diagrammes Mermaid
-- Optimisé pour la recherche et la navigation
-
-## 🚀 Démarrage rapide
-
-### Prérequis
-
-- Ruby >= 2.6.0
-- Bundler
-- Jekyll
-
-### Installation locale
-
-```
-.
-├── compliance/           # Matrices de conformité
-├── docs/                 # Documentation détaillée
-│   ├── eks/             # Documentation spécifique à EKS
-│   ├── gke/             # Documentation spécifique à GKE
-│   └── shared/          # Documentation commune
-└── resources/           # Ressources supplémentaires
-```
-
-## 🔍 Comment utiliser
-
-1. Consultez les matrices de conformité pour votre fournisseur cloud
-2. Suivez les recommandations spécifiques à Yamify
-3. Implémentez les contrôles de sécurité nécessaires
-4. Utilisez la documentation pour auditer votre configuration
 
 ## 🤝 Contribuer
 
