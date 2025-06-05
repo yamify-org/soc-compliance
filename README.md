@@ -1,26 +1,55 @@
-# Recherche sur la conformité SOC pour Yamify
+# Conformité SOC 2 pour Kubernetes (AWS EKS et GCP GKE)
 
-Documentation de recherche sur la conformité SOC 2 pour les environnements Kubernetes de Yamify, avec un accent sur les déploiements sur AWS EKS et Google GKE.
+## 📋 Table des matières
 
-## 📊 Matrices de conformité
+1. [Introduction et présentation des rapports SOC](./docs/01-introduction.md)
+   - SOC 1, SOC 2, SOC 3 : différences et cas d'usage
+   - Pourquoi choisir SOC 2 pour Kubernetes ?
 
-### [Matrice SOC 2 pour EKS](compliance/eks-soc2-matrix.csv)
-- Contrôles spécifiques AWS EKS
-- Configuration recommandée Yamify
-- Références aux bonnes pratiques AWS
+2. [Modèles de responsabilité partagée](./docs/02-responsabilites-partagees.md)
+   - AWS EKS : sécurité du cloud vs dans le cloud
+   - GCP GKE : responsabilités partagées
 
-### [Matrice SOC 2 pour GKE](compliance/gke-soc2-matrix.csv)
-- Contrôles spécifiques Google GKE
-- Configuration recommandée Yamify
-- Références aux bonnes pratiques GCP
+3. [Bonnes pratiques pour AWS EKS](./docs/03-bonnes-pratiques-eks.md)
+   - Gestion des identités et accès
+   - Journalisation et audit
+   - Chiffrement des données
+   - Sécurité des workloads
 
-## 🔍 Utilisation
+4. [Bonnes pratiques pour GCP GKE](./docs/04-bonnes-pratiques-gke.md)
+   - Gestion des identités avec Workload Identity
+   - Surveillance et conformité
+   - Sécurité des conteneurs
 
-1. Consultez les matrices de conformité pour votre cloud
-2. Suivez les recommandations Yamify
-3. Implémentez les contrôles de sécurité nécessaires
-4. Utilisez la documentation pour l'audit
+5. [Alignement avec le Well-Architected Framework](./docs/05-well-architected.md)
+   - Pilier Sécurité
+   - Pilier Fiabilité
+   - Excellence opérationnelle
 
-## 📞 Contact
+6. [Stratégie de conformité pour Yamify](./docs/06-strategie-conformite.md)
+   - Feuille de route en 3 phases
+   - Outils recommandés
+   - Mesure et reporting
 
-Pour toute question, ouvrez une issue dans ce dépôt.
+## 🚀 Pour commencer
+
+Cette documentation est conçue pour être lue de manière séquentielle, mais vous pouvez également accéder directement aux sections qui vous intéressent via la table des matières ci-dessus.
+
+## 📚 Ressources supplémentaires
+
+- [AICPA SOC 2 Requirements](https://www.aicpa.org/)
+- [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/)
+- [Google Cloud Security Best Practices](https://cloud.google.com/security/best-practices)
+- [Kubernetes Security Best Practices](https://kubernetes.io/docs/concepts/security/overview/)
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! Pour proposer des modifications ou des améliorations :
+
+1. Forkez ce dépôt
+2. Créez une branche pour votre fonctionnalité
+3. Soumettez une Pull Request
+
+## 📄 Licence
+
+Ce document est fourni sous licence [MIT](./LICENSE).
