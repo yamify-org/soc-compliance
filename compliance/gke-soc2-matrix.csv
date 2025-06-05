@@ -1,6 +1,0 @@
-Domaine,Contrôle SOC 2,Description,Configuration GKE recommandée,Statut,Notes
-Sécurité,CC1.1,Configuration de base sécurisée,Utiliser des images de nœud optimisées par GKE,Recommandé,Activer Shielded Nodes
-Sécurité,CC5.1,Contrôles d'accès,Utiliser Workload Identity pour l'authentification,Recommandé,Éviter les clés de compte de service
-Disponibilité,A.1.4,Haute disponibilité,Configurer des clusters régionaux avec autoscaling,Recommandé,Minimum 3 nœuds par zone
-Confidentialité,C.1.1,Chiffrement des données,Activer le chiffrement des disques et des secrets,Recommandé,Utiliser Cloud KMS pour les clés
-Intégrité,I.1.1,Gouvernance des accès,Utiliser GKE Workload Identity avec IAM,Recommandé,Appliquer les contraintes d'organisation

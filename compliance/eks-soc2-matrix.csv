@@ -1,6 +1,0 @@
-Domaine,Contrôle SOC 2,Description,Configuration EKS recommandée,Statut,Notes
-Sécurité,CC1.1,Établir et maintenir la configuration de base du système,Utiliser des AMI durcies et EKS optimisé,Recommandé,Utiliser les derniers EKS AMI
-Sécurité,CC5.1,Protéger contre les accès non autorisés,Activer les politiques de sécurité des pods,Recommandé,Utiliser des politiques réseau restrictives
-Disponibilité,A.1.4,Protection contre les pannes,Configurer plusieurs nœuds dans différentes zones de disponibilité,Recommandé,Minimum 2 zones de disponibilité
-Confidentialité,C.1.1,Chiffrement des données,Activer le chiffrement EBS et le chiffrement en transit,Recommandé,Utiliser KMS pour la gestion des clés
-Intégrité,I.1.1,Contrôle d'accès basé sur les rôles,Utiliser IAM pour RBAC et les rôles de service,Recommandé,Appliquer le principe du moindre privilège
